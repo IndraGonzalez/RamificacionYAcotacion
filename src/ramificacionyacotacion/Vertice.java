@@ -1,7 +1,7 @@
 
 package ramificacionyacotacion;
 
-public class Vertice {
+public class Vertice implements Comparable<Vertice> {
     int id;
     int[] etapas;
 
@@ -25,6 +25,19 @@ public class Vertice {
     public int[] getEtapas() {
         return etapas;
     }
+
+    @Override
+    public int compareTo(Vertice a) {
+        if(this.id < a.id) {
+            return -1;
+        } 
+        if (this.id > a.id){
+            return 1;
+        }
+        return 0;
+    }
+    
+    
 }
     
     

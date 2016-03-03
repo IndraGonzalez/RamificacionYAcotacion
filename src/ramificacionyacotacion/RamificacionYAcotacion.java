@@ -25,15 +25,14 @@ public class RamificacionYAcotacion {
     }
     
     public List<Nodo> ramificar (Nodo nodo){
-        float[] fila = grafo.getMatrizAdyacente()[nodo.vertice.getId()];
+        float[] fila = grafo.getMatrizAdyacente()[nodo.vertice.getId()-1];
         List<Nodo> hijos = new ArrayList<Nodo>();
         int etapaHijo;
         int etapaPadre = nodo.vertice.getEtapas()[1];
         Vertice vertice;
         for (int i = 0; i < fila.length; i++) {
             if(fila[i] > 0){
-                vertice = grafo.getConjuntoVertices().get(i);
-                
+                vertice = grafo.getConjuntoVertices().get(i);         
                 etapaHijo = vertice.getEtapas()[1];
                 if(etapaHijo > etapaPadre){
                     Nodo nuevoNodo = new Nodo(vertice, nodo);
@@ -73,8 +72,15 @@ public class RamificacionYAcotacion {
         List<Nodo> hijos = ramificar(nodo);
         ordenar(hijos);
         Iterator<Nodo> iterator = hijos.iterator();
+        
+        for (int i = 0; i < hijos.size(); i++) {
+            System.out.println(hijos.get(i).vertice.id);
+            
+        }
+        
         while(iterator.hasNext()){
             Nodo next = iterator.next();
+                        
             float pesoActual = calculaPesoCamino(camino);
             if((pesoActual >= pesoSolucion) && (pesoSolucion != -1)){
                 return;

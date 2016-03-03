@@ -1,6 +1,7 @@
 package ramificacionyacotacion;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -74,6 +75,10 @@ public class Grafo {
     }
 
     public List<Vertice> getConjuntoVertices() {
+        Collections.sort(conjuntoVertices);
+        for (int i = 0; i < conjuntoVertices.size(); i++) {
+            System.out.println(conjuntoVertices.get(i).id);
+        }
         return conjuntoVertices;
     }
     
